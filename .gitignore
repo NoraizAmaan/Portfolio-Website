@@ -1,1 +1,37 @@
-/desktop.ini
+# Dependencies
+node_modules/
+server/node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# Environment variables & secrets
+.env
+.env.production
+.env.development
+.env.local
+.env.*.local
+server/.env
+server/.env.production
+server/.env.development
+server/.env.local
+
+# Editor / System files
+.vscode/
+.idea/
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# Diagnostic / Log Files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Temporal/Backup Original Assets (optional, but recommended if they are not part of the active app)
+original-portfolio.html
+original-script.js

@@ -81,6 +81,7 @@ app.post("/api/contact", async (req, res) => {
     });
   }
 
+  try {
     // 1. Get a fresh access token from Google using the refresh token
     const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
       method: "POST",

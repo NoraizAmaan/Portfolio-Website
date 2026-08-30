@@ -60,12 +60,14 @@ app.post("/api/contact", async (req, res) => {
 
   // Check email credentials
   const emailUser = process.env.EMAIL_USER;
-  const emailPass = process.env.EMAIL_PASS;
+  const clientId = process.env.CLIENT_ID;
+  const clientSecret = process.env.CLIENT_SECRET;
+  const refreshToken = process.env.REFRESH_TOKEN;
   const receiverEmail = process.env.RECEIVER_EMAIL || "noraizamaan150303@gmail.com";
 
-  if (!emailUser || !emailPass) {
+  if (!emailUser || !clientId || !clientSecret || !refreshToken) {
     console.log("=========================================");
-    console.log("⚠️ EMAIL CREDENTIALS NOT CONFIGURED IN .env");
+    console.log("⚠️ OAUTH CREDENTIALS NOT CONFIGURED IN RENDER/ENVIRONMENT");
     console.log("Showing simulated contact submission:");
     console.log(`From: ${name} <${email}>`);
     console.log(`Subject: ${subject}`);

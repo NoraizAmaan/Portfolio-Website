@@ -80,14 +80,15 @@ app.post("/api/contact", async (req, res) => {
   }
 
   try {
-    // Create transporter (explicitly configured for Gmail SMTP Port 587 TLS)
+    // Create transporter (OAuth2 configured for Gmail API via HTTP/REST)
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // false for port 587
+      service: "gmail",
       auth: {
+        type: "OAuth2",
         user: emailUser,
-        pass: emailPass
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN
       }
     });
 

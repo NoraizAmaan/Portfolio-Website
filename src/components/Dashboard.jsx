@@ -212,6 +212,7 @@ export default function Dashboard() {
   const [cardWidth, setCardWidth] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobilePoppedOut, setIsMobilePoppedOut] = useState(true);
 
   // Resize and width calculation logic
   useEffect(() => {
@@ -249,6 +250,11 @@ export default function Dashboard() {
   useEffect(() => {
     setCurrentIndex((prev) => Math.min(prev, maxIndex));
   }, [visibleCount, maxIndex]);
+
+  // Reset pop-out state when changing active certificate
+  useEffect(() => {
+    setIsMobilePoppedOut(true);
+  }, [currentIndex]);
 
   const slideNext = () => {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
@@ -340,8 +346,23 @@ export default function Dashboard() {
               className="slider-track"
               style={{ transform: `translateX(-${offset}px)` }}
             >
-              {certificationsData.map((cert) => (
-                <div key={cert.id} className={`cert-card-envelope ${cert.envelopeClass}`}>
+              {certificationsData.map((cert, idx) => {
+                const isActive = visibleCount === 1 && idx === currentIndex && isMobilePoppedOut;
+                return (
+                  <div 
+                    key={cert.id} 
+                    className={`cert-card-envelope ${cert.envelopeClass} ${isActive ? "active" : ""}`}
+                    onClick={() => {
+                      if (visibleCount === 1) {
+                        if (idx === currentIndex) {
+                          setIsMobilePoppedOut((prev) => !prev);
+                        } else {
+                          setCurrentIndex(idx);
+                          setIsMobilePoppedOut(true);
+                        }
+                      }
+                    }}
+                  >
                   <div className="certificate-paper">
                     <div className="cert-header">
                       <div className="cert-seal"></div>
@@ -388,7 +409,8 @@ export default function Dashboard() {
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+            })}
             </div>
           </div>
           

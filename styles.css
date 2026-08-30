@@ -1765,9 +1765,16 @@ body.light-mode .slider-btn:active {
   transform: translateY(30px);
 }
 
-.cert-card-envelope:hover .certificate-paper {
+.cert-card-envelope.active .certificate-paper {
   transform: translateY(-110px) rotate(-1.5deg);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (hover: hover) {
+  .cert-card-envelope:hover .certificate-paper {
+    transform: translateY(-110px) rotate(-1.5deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+  }
 }
 
 /* Certificate Content Styles */
@@ -1961,15 +1968,21 @@ body.light-mode .slider-btn:active {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.cert-card-envelope:hover .envelope-pocket {
+.cert-card-envelope.active .envelope-pocket {
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+@media (hover: hover) {
+  .cert-card-envelope:hover .envelope-pocket {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /* Theme Glow & Hover Coloring */
 .cert-aws {
   border-color: rgba(245, 158, 11, 0.2);
 }
-.cert-aws:hover {
+.cert-aws.active {
   border-color: #f59e0b;
   box-shadow: 0 0 25px rgba(245, 158, 11, 0.45);
 }
@@ -1981,7 +1994,7 @@ body.light-mode .slider-btn:active {
 .cert-react {
   border-color: rgba(6, 182, 212, 0.2);
 }
-.cert-react:hover {
+.cert-react.active {
   border-color: #06b6d4;
   box-shadow: 0 0 25px rgba(6, 182, 212, 0.45);
 }
@@ -1993,7 +2006,7 @@ body.light-mode .slider-btn:active {
 .cert-fullstack {
   border-color: rgba(59, 130, 246, 0.2);
 }
-.cert-fullstack:hover {
+.cert-fullstack.active {
   border-color: #3b82f6;
   box-shadow: 0 0 25px rgba(59, 130, 246, 0.45);
 }
@@ -2005,7 +2018,7 @@ body.light-mode .slider-btn:active {
 .cert-uiux {
   border-color: rgba(244, 63, 94, 0.2);
 }
-.cert-uiux:hover {
+.cert-uiux.active {
   border-color: #f43f5e;
   box-shadow: 0 0 25px rgba(244, 63, 94, 0.45);
 }
@@ -2017,7 +2030,7 @@ body.light-mode .slider-btn:active {
 .cert-gcp-digital {
   border-color: rgba(14, 165, 233, 0.2);
 }
-.cert-gcp-digital:hover {
+.cert-gcp-digital.active {
   border-color: #0ea5e9;
   box-shadow: 0 0 25px rgba(14, 165, 233, 0.45);
 }
@@ -2029,7 +2042,7 @@ body.light-mode .slider-btn:active {
 .cert-aws-practitioner {
   border-color: rgba(234, 88, 12, 0.2);
 }
-.cert-aws-practitioner:hover {
+.cert-aws-practitioner.active {
   border-color: #ea580c;
   box-shadow: 0 0 25px rgba(234, 88, 12, 0.45);
 }
@@ -2041,9 +2054,23 @@ body.light-mode .slider-btn:active {
 .cert-ml {
   border-color: rgba(139, 92, 246, 0.2);
 }
-.cert-ml:hover {
+.cert-ml.active {
   border-color: #8b5cf6;
   box-shadow: 0 0 25px rgba(139, 92, 246, 0.45);
+}
+.cert-ml .cert-view-btn:hover {
+  color: #4c1d95;
+}
+
+/* Media query to only trigger card-glowing effects on hover-capable devices (desktops) */
+@media (hover: hover) {
+  .cert-aws:hover { border-color: #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.45); }
+  .cert-react:hover { border-color: #06b6d4; box-shadow: 0 0 25px rgba(6, 182, 212, 0.45); }
+  .cert-fullstack:hover { border-color: #3b82f6; box-shadow: 0 0 25px rgba(59, 130, 246, 0.45); }
+  .cert-uiux:hover { border-color: #f43f5e; box-shadow: 0 0 25px rgba(244, 63, 94, 0.45); }
+  .cert-gcp-digital:hover { border-color: #0ea5e9; box-shadow: 0 0 25px rgba(14, 165, 233, 0.45); }
+  .cert-aws-practitioner:hover { border-color: #ea580c; box-shadow: 0 0 25px rgba(234, 88, 12, 0.45); }
+  .cert-ml:hover { border-color: #8b5cf6; box-shadow: 0 0 25px rgba(139, 92, 246, 0.45); }
 }
 .cert-ml .cert-view-btn:hover {
   color: #4c1d95;
